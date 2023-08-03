@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DOM-PRO</title>
+    <style>
+
+      body{
+        font-family: Arial;
+      }
+
+      .js-sub{
+        border: none;
+        background-color: black;
+        color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+
+      .is_sub{
+        background-color: rgba(240, 240, 240);
+        color: black;
+      }
+
+      .js-cost-input{
+        font-size: 15px;
+        padding: 10px;
+      }
+
+      .btn-cal{
+        background-color: green;
+        color: white;
+        border: none;
+        font-size: 15px;
+        padding: 12px 15px;
+        cursor: pointer;
+      }
+
+
+    
+    </style>
+
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+
+    <button onclick="
+     sub();
+     "
+    class="js-sub">Subscribe</button>
+
+
+
+
+    <h3> Amazon Shiping Calculator</h3>
+
+    <input placeholder="Cost of order"     class="js-cost-input" onkeydown="
+        handleCostKeydown(event);
+    ">
+
+    <button class="btn-cal" onclick="
+      CalculateTotal();
+    ">Calculate</button>
+
+    <p class="js-total-cost"></p>
+
+
+    <script>
+
+      //window.document
+
+      function handleCostKeydown(event){
+        if(event.key==='Enter'){
+           CalculateTotal();
+
+          }
+        
+      }
+
+      function CalculateTotal(){
+       const inputElement= document.querySelector('.js-cost-input');
+
+        let cost = Number(inputElement.value) ; 
+
+        if(cost<40){
+          cost = cost + 10;
+        }
+        
+        document.querySelector('.js-total-cost').innerHTML='$'+ cost;
+      }
+
+
+      function sub(){
+        const btnElm=document.querySelector('.js-sub');
+     if(btnElm.innerHTML==='Subscribe'){
+      btnElm.innerHTML='Subscribed';
+
+      //هان بدي اعطي كلاس للزر  لما اضغط عليه  
+      btnElm.classList.add('is_sub');
+
+     }else{
+      btnElm.innerHTML='Subscribe';
+      btnElm.classList.remove('is_sub');
+
+     } 
+      }
+
+    </script>
+  </body>
+</html>
